@@ -15,9 +15,16 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class ActivityService {
     private final ActivityRepo activityRepo;
+    private final UserValidationService userValidationService;
 
     public ActivityResponse addUserActivity(ActivityRequest activityRequest) {
         //System.out.println(activityRequest.toString());
+        boolean exists = userValidationService.validateUser(activityRequest.getUserId());
+        if (!exists) {
+            throw new IllegalArgumentException(
+                    "User not found: " + activityRequest.getUserId()
+            );
+        }
         Activity savedActivity=activityRepo.save(ActivityMapper.buildActivity(activityRequest));
         return ActivityMapper.toResponse(savedActivity);
     }

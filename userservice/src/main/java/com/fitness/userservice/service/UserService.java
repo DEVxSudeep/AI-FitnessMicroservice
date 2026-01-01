@@ -36,4 +36,8 @@ public class UserService {
 
         return UserMapper.toResponse(saved);
     }
+
+    public Boolean validateUser(String userId) {
+        return userRepo.existsById(userId);
+    }
 }
