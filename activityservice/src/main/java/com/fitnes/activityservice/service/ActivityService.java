@@ -28,4 +28,8 @@ public class ActivityService {
             responses.add(ActivityMapper.toResponse(a));}
         return responses;
     }
+
+    public ActivityResponse getActivityById(String id){
+        return ActivityMapper.toResponse(activityRepo.findById(id).orElseThrow(()->new RuntimeException("No Activity found")));
+    }
 }

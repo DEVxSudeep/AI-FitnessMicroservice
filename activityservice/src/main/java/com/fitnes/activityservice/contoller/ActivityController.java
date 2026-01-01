@@ -17,7 +17,7 @@ import java.util.List;
 public class ActivityController {
     private final ActivityService activityService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<ActivityResponse> addActivity(@RequestBody ActivityRequest activityRequest){
         return ResponseEntity.ok(activityService.addUserActivity(activityRequest));
     }
@@ -27,4 +27,10 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.getUserActivities(userId));
 
     }
+
+    @GetMapping("/{id}")
+    public  ResponseEntity<ActivityResponse> getActivityById(@PathVariable String id){
+        return ResponseEntity.ok(activityService.getActivityById(id));
+    }
+
 }
