@@ -1,6 +1,6 @@
 spring:
   application:
-  name: userservice
+    name: userservice
   datasource:
     url: jdbc:postgresql://localhost:5432/fitness_user_db_v1
     username: fitness_user
@@ -16,3 +16,5 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: fitness_user_schema
 
+server:
+  port: 8081
