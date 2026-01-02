@@ -1,3 +1,15 @@
 spring:
   application:
     name: ai-coach-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fitness_userActivity_AiRecommendation
+      database: fitness_userActivity_AiRecommendation
+
+
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
